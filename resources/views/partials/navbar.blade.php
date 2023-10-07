@@ -32,9 +32,33 @@
         <a href="./" class="mx-auto"><img src="img/navbar_icon.jpg" class="img-fluid" width="143" alt="Logo" /></a>
         <ul
           class="navbar-nav my-2 my-lg-0 navbar-nav-scroll">
-          <li class="nav-item">
-            <a class="btn btn-light tombolsign" aria-current="page" href="./auth/register.php">Sign Up</a>
-          </li>
+          @if (Auth::guard()->check())
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" style="margin-top: 4px;" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span>
+                            <i class="bi bi-person-fill"></i> &nbsp;
+                            {{ Auth::user()->name }}
+                        </span>
+                        
+                    </a>
+                    <ul class="dropdown-menu">
+                        @if (Auth::user()->role == 'Admin')
+                        <li><a class="dropdown-item" href="/admin/product"><i class="bi bi-clipboard2-data-fill"></i></i>&nbsp; Dashboard</a></li>
+                        @endif
+                        <li>
+                            <form action="/logout" method="POST">
+                            @csrf
+                            <button type="submit" class="dropdown-item" style="color: #a52b2a"><i class="bi bi-box-arrow-right"></i>&nbsp; Logout</button>
+                        </li>
+                    {{-- <li><a class="dropdown-item" href="/logout" style="color: crimson;"><i class="bi bi-box-arrow-left"></i>&nbsp; Logout</a></li> --}}
+                    </ul>
+                </li>
+            @else
+                <li class="nav-item">
+                    <a class="btn btn-light tombolsign" aria-current="page" href="/register">Sign Up</a>
+                </li>
+          @endif
+          
         </ul>
       </div>
     </div>

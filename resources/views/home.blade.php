@@ -1,5 +1,19 @@
 @extends('layouts.main')
 
+{{-- Register Successful --}}
+@if (session()->has('success'))
+<div class="alert alert-success text-center mb-5" role="alert">
+    {{ session('success') }}
+</div>
+@endif
+
+{{-- Login Error --}}
+@if (session()->has('loginError'))
+    <div class="alert alert-danger text-center mb-5" role="alert">
+        {{ session('loginError') }}
+    </div>
+@endif
+
 @section('container')
     <div class="row align-items-center">
         <div class="col-lg-6 mt-4 ">
@@ -28,39 +42,36 @@
 @section('section-get-started')
     <div class="container">
 
-        <div class="row justify-content-between gy-4">
+        <div class="row justify-content-center gy-4">
 
         <div class="col-lg-6 d-flex align-items-center" data-aos="fade-up">
-            <div class="content">
+            <div class="content text-center">
             <h3>Mengenal PETHAL Lebih Jauh</h3>
-            <p>Hewan juga sama makhluk hidup, sama seperti manusia. Karena itu, mereka juga membutuhkan perawatan dan pengobatan ketika sakit, perhatian lebih agar terlihat indah, dan kasih sayang agar bahagia.
-            <p>PETHAL Mewujudkan impian semua pencinta hewan, menjadi klinik hewan yang memiliki layanan unggulan dengan tenaga profesional dan menjunjung tinggi <i>Animal Welfare</i></p>
-
-            <p><i>"Because We Care, We Share"</i></p>
+            <p>Hewan juga sama makhluk hidup, sama seperti manusia. Karena itu, mereka juga membutuhkan perawatan dan pengobatan ketika sakit, perhatian lebih agar terlihat indah, dan kasih sayang agar bahagia. PETHAL Mewujudkan impian semua pencinta hewan, menjadi klinik hewan yang memiliki layanan unggulan dengan tenaga profesional dan menjunjung tinggi <i>Animal Welfare</i><br><i>"Because We Care, We Share"</i>
             </div>
         </div>
 
         <!-- Consult Section-->
-        <div class="col-lg-5" data-aos="fade">
+        {{-- <div class="col-lg-5" data-aos="fade">
             <form action="#" method="post" class="php-email-form">
             <h3>Tell us more about your pet </h3>
             <p>You can even upload photos and medical documents if you desire. You can even upload photos and medical documents if you desire.</p>
             <div class="row gy-3">
 
                 <div class="col-md-12">
-                <input type="text" name="name" class="form-control" placeholder="Name" required>
+                <input type="text" name="name" class="form-control" placeholder="Name">
                 </div>
 
                 <div class="col-md-12 ">
-                <input type="email" class="form-control" name="email" placeholder="Email" required>
+                <input type="email" class="form-control" name="email" placeholder="Email">
                 </div>
 
                 <div class="col-md-12">
-                <input type="text" class="form-control" name="phone" placeholder="Phone" required>
+                <input type="text" class="form-control" name="phone" placeholder="Phone">
                 </div>
 
                 <div class="col-md-12">
-                <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+                <textarea class="form-control" name="message" rows="6" placeholder="Message"></textarea>
                 </div>
 
                 <div class="col-md-12 text-center">
@@ -72,7 +83,7 @@
                 </div>
             </div>
             </form>
-        </div>
+        </div> --}}
         <!-- End Consult Section-->
         </div>
     </div>
