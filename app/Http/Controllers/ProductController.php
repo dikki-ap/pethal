@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductImage;
 use App\Models\ProductType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -55,7 +57,7 @@ class ProductController extends Controller
         Product::create($validatedData);
 
         // Redirect ke halaman yang ditentukan dan tampilkan pesan yang ditentukan
-        return redirect('/admin/product')->with('success', 'Successfully added new Product');
+        return redirect('/admin/product')->with('success', 'Successfully Added New Product');
     }
 
     /**
@@ -104,7 +106,7 @@ class ProductController extends Controller
         Product::where('id', $product->id)->update($validatedData);
 
         // Redirect ke halaman yang ditentukan dan tampilkan pesan yang ditentukan
-        return redirect('/admin/product')->with('success', 'Successfully changed the Product');
+        return redirect('/admin/product')->with('success', 'Successfully Changed the Product');
     }
 
     /**
@@ -115,6 +117,22 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        // Ambil semua Galleries dari Material berdasarkan 'material_id'
+        $productImages = ProductImage::select('*')->where('product_id', '=', $product->id)->get();
+
+        // Lakukan looping dengan foreach karena data berbentuk Array Assocative
+        foreach($productImages as $productImage){
+            // Hapus Gallery dari DB berdasarkan 'id'
+            ProductImage::destroy($productImage->id);
+
+            // Hapus file Gallery dari Storage berdasarkan 'url'
+            Storage::delete($productImage->url);
+        }
+
+        // Hapus Material dari DB berdasrkan 'id'
+        Product::destroy($product->id);
+
+        // Redirect ke halaman yang ditentukan dan tampilkan pesan yang ditentukan
+        return redirect('/admin/product')->with('success', 'Product Has Been Successfully Deleted');
     }
 }

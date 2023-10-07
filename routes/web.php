@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,5 +37,8 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 // Logout (POST)
 Route::post('/logout', [LoginController::class, 'logout']);
 
-// Products (View)
+// Products (Resource)
 Route::resource('/admin/product', ProductController::class);
+
+// Product Types (Resource)
+Route::resource('/admin/product-type', ProductTypeController::class);

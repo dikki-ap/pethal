@@ -26,12 +26,12 @@
                     <div id="personnel-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal small">
                             <li>
-                                <a href="/admin/product" class="sideBar-link" id="{{ Request::is('admin/product*') ? 'sideBar-KList' : '' }}">
+                                <a href="/admin/product" class="sideBar-link" id="{{ Request::is('admin/product') ? 'sideBar-KList' : '' }}">
                                     <span data-feather="list"></span>&nbsp; Product List
                                 </a>
                             </li>
                             <li>
-                                <a href="/admin/productype" class="sideBar-link" id="{{ Request::is('admin/product_types*') ? 'sideBar-KList' : '' }}">
+                                <a href="/admin/product-type" class="sideBar-link" id="{{ Request::is('admin/product-type') ? 'sideBar-KList' : '' }}">
                                     <span data-feather="grid"></span>&nbsp; Product Type
                                 </a>
                             </li>
