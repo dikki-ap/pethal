@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500&display=swap');
+
+
+.nav-item  {
+  font-family: 'Sen', sans-serif;
+  font-size: 15px;
+}
+.tombolsign   {
+  font-size: 15px;
+  padding: 6px 27px;
+}
+.tombolsign:hover {
+  color: white;
+  background-color: #26964b;
+  border: 1px solid white;
+}
+/* .container-fluid  {
+  height: 630px;
+  background-image: url(/styles/img/wave.png);
+  background-size: cover;
+} */
+.col-lg-6 {
+  font-family: 'Sen', sans-serif;
+}
+.col-lg-6 h1{
+  font-size: 50px;
+}
+.col-lg-6 p{
+  margin-top: -12px;
+  font-size: 27px;
+}
+.word {
+  margin-left: 108px;
+}
+.word2  {
+  margin-left: 20px;
+  margin-top: 25px;
+}
+.btn  {
+  border-radius: 40px;
+  margin-top: 9px;
+  margin-left: 100px;
+  font-family: 'Sen', sans-serif;
+}
+.container2  {
+  margin-top: -60px;
+}
+.container3 {
+  margin-top: 50px;
+}
+.b-titles {
+  color: #21633a;
+  font-size: 55px;
+  font-family: 'DM Serif Display', serif;
+}
+.s-titles {
+  margin-top: -18px;
+  color: #9da85a;
+  font-size: 30px;
+  font-family: 'DM Serif Display', serif;
+}
+.card {
+  width: 350px;
+  height: 465px;
+}
+.card-body  {
+  font-family: 'Nunito', sans-serif;
+}
+.card img {
+  border-radius: 5px;
+}
+
+.card-img-overlay {
+  position: absolute; /* Position the background text */
+  bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  color: #f1f1f1; /* Grey text */
+  width: 100%; /* Full width */
+  padding: 20px; /* Some padding */
+}
+
+/*--------------------------------------------------------------
+# Sections & Section Header
+--------------------------------------------------------------*/
+section {
+padding: 80px 0;
+overflow: hidden;
+margin-top: 110px;
+}
+
+.section-bg {
+  background-color: #f5f6f7;
+}
+
+.section-header {
+  text-align: center;
+  padding-bottom: 70px;
+}
+
+.section-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  position: relative;
+  color: #2e3135;
+}
+
+.section-header h2:before,
+.section-header h2:after {
+  content: "";
+  width: 50px;
+  height: 2px;
+  background: var(--color-primary);
+  display: inline-block;
+}
+
+.section-header h2:before {
+  margin: 0 15px 10px 0;
+}
+
+.section-header h2:after {
+  margin: 0 0 10px 15px;
+}
+
+.section-header p {
+  margin: 0 auto 0 auto;
+}
+
+@media (min-width: 1199px) {
+  .section-header p {
+      max-width: 60%;
+  }
+}
+
+/*--------------------------------------------------------------
+# Get Started Section
+--------------------------------------------------------------*/
+.get-started .content {
+padding: 30px 0;
+}
+
+.get-started .content h3 {
+font-size: 36px;
+color: var(--color-secondary);
+font-weight: 600;
+margin-bottom: 25px;
+padding-bottom: 25px;
+position: relative;
+}
+
+.get-started .content h3:after {
+content: "";
+position: absolute;
+display: block;
+width: 60px;
+height: 4px;
+background: var(--color-primary);
+left: 0;
+bottom: 0;
+}
+
+.get-started .content p {
+font-size: 14px;
+}
+
+.get-started .php-email-form {
+background: #fff;
+padding: 30px;
+height: 100%;
+}
+
+@media (max-width: 575px) {
+.get-started .php-email-form {
+  padding: 20px;
+}
+}
+
+.get-started .php-email-form h3 {
+font-size: 20px;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 1px;
+color: #4DAB6E;
+}
+
+.get-started .php-email-form p {
+font-size: 14px;
+margin-bottom: 20px;
+}
+
+.get-started .php-email-form .error-message {
+display: none;
+color: #fff;
+background: #df1529;
+text-align: left;
+padding: 15px;
+margin-bottom: 24px;
+font-weight: 600;
+}
+
+.get-started .php-email-form .sent-message {
+display: none;
+color: #fff;
+background: #059652;
+text-align: center;
+padding: 15px;
+margin-bottom: 24px;
+font-weight: 600;
+}
+
+.get-started .php-email-form .loading {
+display: none;
+background: #fff;
+text-align: center;
+padding: 15px;
+margin-bottom: 24px;
+}
+
+.get-started .php-email-form .loading:before {
+content: "";
+display: inline-block;
+border-radius: 50%;
+width: 24px;
+height: 24px;
+margin: 0 10px -6px 0;
+border: 3px solid #059652;
+border-top-color: #fff;
+animation: animate-loading 1s linear infinite;
+}
+
+.get-started .php-email-form input,
+.get-started .php-email-form textarea {
+border-radius: 0;
+box-shadow: none;
+font-size: 14px;
+border-radius: 0;
+}
+
+.get-started .php-email-form input:focus,
+.get-started .php-email-form textarea:focus {
+border-color: var(--color-primary);
+}
+
+.get-started .php-email-form input {
+padding: 12px 15px;
+}
+
+.get-started .php-email-form textarea {
+padding: 12px 15px;
+}
+
+.get-started .php-email-form button[type=submit] {
+background: var(--color-primary);
+border: 0;
+padding: 10px 30px;
+color: #fff;
+transition: 0.4s;
+border-radius: 4px;
+}
+
+.get-started .php-email-form button[type=submit]:hover {
+background: rgba(254, 185, 0, 0.8);
+}
+
+@keyframes animate-loading {
+0% {
+  transform: rotate(0deg);
+}
+
+100% {
+  transform: rotate(360deg);
+}
+}
+
+/*--------------------------------------------------------------
+# Scroll top button
+--------------------------------------------------------------*/
+.scroll-top {
+position: fixed;
+visibility: hidden;
+opacity: 0;
+right: 15px;
+bottom: 15px;
+z-index: 99999;
+background: var(--color-primary);
+width: 40px;
+height: 40px;
+border-radius: 4px;
+transition: all 0.4s;
+}
+
+.scroll-top i {
+font-size: 24px;
+color: var(--color-secondary);
+line-height: 0;
+}
+
+.scroll-top:hover {
+background: #ffc732;
+color: #fff;
+}
+
+.scroll-top.active {
+visibility: visible;
+opacity: 1;
+}
+
+/* Footer */
+.footer {
+  margin-top: 50px;
+}
+
+.footer p {
+  font-size: 14px;
+}
+
+#footer-credit {
+  color: black;
+  text-decoration: none;
+}
+
+#footer-credit:hover {
+  color: #ff6c36;
+}
