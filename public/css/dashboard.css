@@ -35,7 +35,7 @@ body {
 .btn-toggle:hover,
 .btn-toggle:focus {
     color: rgba(0, 0, 0, 0.85);
-    background-color: #b7d3e7;
+    background-color: #e0e7df;
 }
 
 .btn-toggle::before {
@@ -62,7 +62,7 @@ body {
 }
 .btn-toggle-nav a:hover,
 .btn-toggle-nav a:focus {
-    background-color: #b7d3e7;
+    background-color: #e0e7df;
 }
 
 /* Sidebar */
@@ -92,7 +92,7 @@ body {
 }
 
 #sideBar-KList {
-    color: #adc2a9;
+    color: #4dab6e;
     font-weight: bold;
 }
 

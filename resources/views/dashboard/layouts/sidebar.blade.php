@@ -21,17 +21,17 @@
             <ul class="list-unstyled p-2">
                 <li>
                     <button id="btnSideBar-Personnel" class="btn btn-toggle mt-3 align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#personnel-collapse" aria-expanded="true">
-                        <span data-feather="archive"></span>&nbsp; Products &nbsp;<i class="bi bi-caret-down-fill me-3"></i></span>
+                        <span data-feather="archive"></span>&nbsp; Product &nbsp;<i class="bi bi-caret-down-fill me-3"></i></span>
                     </button>
                     <div id="personnel-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal small">
                             <li>
-                                <a href="/dashboard/materials" class="sideBar-link" id="{{ Request::is('dashboard/materials*') ? 'sideBar-KList' : '' }}">
+                                <a href="/admin/product" class="sideBar-link" id="{{ Request::is('admin/product*') ? 'sideBar-KList' : '' }}">
                                     <span data-feather="list"></span>&nbsp; Product List
                                 </a>
                             </li>
                             <li>
-                                <a href="/dashboard/categories" class="sideBar-link" id="{{ Request::is('dashboard/categories*') ? 'sideBar-KList' : '' }}">
+                                <a href="/admin/productype" class="sideBar-link" id="{{ Request::is('admin/product_types*') ? 'sideBar-KList' : '' }}">
                                     <span data-feather="grid"></span>&nbsp; Product Type
                                 </a>
                             </li>
