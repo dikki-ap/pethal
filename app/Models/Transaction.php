@@ -16,4 +16,20 @@ class Transaction extends Model
     untuk menentukan field mana saja yang bisa diisi melalui Mass Assigment
     */
     protected $guarded = ['id'];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function product_type(){
+        return $this->belongsTo(ProductType::class);
+    }
+
+    public function product(){
+        return $this->belongsTo(Product::class);
+    }
+
+    public function payment_type(){
+        return $this->belongsTo(PaymentType::class);
+    }
 }

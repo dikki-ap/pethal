@@ -45,6 +45,13 @@
                 </li>
             </ul>
 
+            {{-- Doctor --}}
+            <div class="p-2">
+                <a href="/admin/doctor" class="sideBar-link" id="{{ Request::is('admin/doctor*') ? 'sideBar-KList' : '' }}">
+                    <span data-feather="user"></span>&nbsp; Doctor
+                </a>
+            </div>
+
             {{-- Service Type --}}
             <div class="p-2">
                 <a href="/admin/service-type" class="sideBar-link" id="{{ Request::is('admin/service-type*') ? 'sideBar-KList' : '' }}">

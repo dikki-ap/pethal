@@ -16,4 +16,14 @@ class Schedule extends Model
     untuk menentukan field mana saja yang bisa diisi melalui Mass Assigment
     */
     protected $guarded = ['id'];
+
+    protected $with = ['day'];
+
+    public function day(){
+        return $this->belongsTo(Day::class);
+    }
+
+    public function doctor(){
+        return $this->belongsTo(Doctor::class);
+    }
 }

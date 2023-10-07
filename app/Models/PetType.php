@@ -16,4 +16,8 @@ class PetType extends Model
     untuk menentukan field mana saja yang bisa diisi melalui Mass Assigment
     */
     protected $guarded = ['id'];
+
+    public function services(){
+        return $this->hasMany(Service::class, 'pet_type_id', 'id');
+    }
 }

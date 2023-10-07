@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaymentTypeController;
 use App\Http\Controllers\PetTypeController;
@@ -59,3 +60,6 @@ Route::resource('/admin/pet-type', PetTypeController::class);
 
 // Payment Type (Resource)
 Route::resource('/admin/payment-type', PaymentTypeController::class);
+
+// Doctor (Resource)
+Route::resource('/admin/doctor', DoctorController::class);

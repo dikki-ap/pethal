@@ -64,7 +64,7 @@
 
                         {{-- Phone --}}
                         <div class="form-floating">
-                            <input type="number" name="phone" class="form-control @error('phone')
+                            <input type="number" minlength="11" maxlength="13" name="phone" class="form-control @error('phone')
                                 is-invalid
                             @enderror" id="phone" placeholder="phone" autofocus required value="{{ old('phone') }}">
                             <label for="phone">Phone</label>

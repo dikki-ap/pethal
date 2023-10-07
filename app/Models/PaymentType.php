@@ -16,4 +16,16 @@ class PaymentType extends Model
     untuk menentukan field mana saja yang bisa diisi melalui Mass Assigment
     */
     protected $guarded = ['id'];
+
+    public function payments(){
+        return $this->hasMany(Payment::class, 'payment_type_id', 'id');
+    }
+
+    public function transactions(){
+        return $this->hasMany(Transaction::class, 'payment_type_id', 'id');
+    }
+
+    public function services(){
+        return $this->hasMany(Service::class, 'payment_type_id', 'id');
+    }
 }

@@ -16,4 +16,24 @@ class Service extends Model
     untuk menentukan field mana saja yang bisa diisi melalui Mass Assigment
     */
     protected $guarded = ['id'];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function pet_type(){
+        return $this->belongsTo(PetType::class);
+    }
+
+    public function service_type(){
+        return $this->belongsTo(ServiceType::class);
+    }
+
+    public function doctor(){
+        return $this->belongsTo(Doctor::class);
+    }
+
+    public function payment_type(){
+        return $this->belongsTo(PaymentType::class);
+    }
 }

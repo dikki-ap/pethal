@@ -17,8 +17,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('doctor_id');
             $table->foreignId('day_id');
-            $table->dateTimeTz('start_time');
-            $table->dateTimeTz('end_time');
             $table->timestamps();
         });
     }

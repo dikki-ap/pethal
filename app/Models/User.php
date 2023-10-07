@@ -25,6 +25,18 @@ class User extends Authenticatable
     */
     protected $guarded = ['id'];
 
+    public function services(){
+        return $this->hasMany(Service::class, 'user_id', 'id');
+    }
+
+    public function transactions(){
+        return $this->hasMany(Transaction::class, 'user_id', 'id');
+    }
+
+    public function payments(){
+        return $this->hasMany(Payment::class, 'user_id', 'id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

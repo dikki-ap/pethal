@@ -23,7 +23,7 @@ class RegisterController extends Controller
             "name" => "required|max:30", //  => ['required', 'max:30']
             "email" => "required|email:dns|unique:users",
             "password" => "required|min:3|max:16",
-            "phone" => "required|max:13",
+            "phone" => "required|min:11|max:13",
         ]);
 
         // Cara 1
