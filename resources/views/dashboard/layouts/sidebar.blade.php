@@ -31,12 +31,12 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/admin/product-type" class="sideBar-link" id="{{ Request::is('admin/product-type') ? 'sideBar-KList' : '' }}">
+                                <a href="/admin/product-type" class="sideBar-link" id="{{ Request::is('admin/product-type*') ? 'sideBar-KList' : '' }}">
                                     <span data-feather="grid"></span>&nbsp; Product Type
                                 </a>
                             </li>
                             <li>
-                                <a href="/dashboard/galleries" class="sideBar-link" id="{{ Request::is('dashboard/galleries*') ? 'sideBar-KList' : '' }}">
+                                <a href="/admin/product-image" class="sideBar-link" id="{{ Request::is('admin/product-image*') ? 'sideBar-KList' : '' }}">
                                     <span data-feather="image"></span>&nbsp; Product Image
                                 </a>
                             </li>
@@ -44,6 +44,27 @@
                     </div>
                 </li>
             </ul>
+
+            {{-- Service Type --}}
+            <div class="p-2">
+                <a href="/admin/service-type" class="sideBar-link" id="{{ Request::is('admin/service-type*') ? 'sideBar-KList' : '' }}">
+                    <span data-feather="git-merge"></span>&nbsp; Service Type
+                </a>
+            </div>
+
+            {{-- Pet Type --}}
+            <div class="p-2">
+                <a href="/admin/pet-type" class="sideBar-link" id="{{ Request::is('admin/pet-type*') ? 'sideBar-KList' : '' }}">
+                    <span data-feather="github"></span>&nbsp; Pet Type
+                </a>
+            </div>
+
+            {{-- Payment Type --}}
+            <div class="p-2">
+                <a href="/admin/payment-type" class="sideBar-link" id="{{ Request::is('admin/payment-type*') ? 'sideBar-KList' : '' }}">
+                    <span data-feather="dollar-sign"></span>&nbsp; Payment Type
+                </a>
+            </div>
 
             {{-- Logout --}}
             <div class="p-2">

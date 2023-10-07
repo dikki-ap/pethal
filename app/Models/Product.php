@@ -22,4 +22,8 @@ class Product extends Model
     public function product_type(){
         return $this->belongsTo(ProductType::class);
     }
+
+    public function galleries(){
+        return $this->hasMany(ProductImage::class, 'product_id', 'id');
+    }
 }

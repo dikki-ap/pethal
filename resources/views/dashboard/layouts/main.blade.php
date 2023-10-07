@@ -67,6 +67,13 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
     <script>
+        function confirmAndSubmit(event) {
+            if (confirm('Are you sure you want to delete this image?')) {
+                event.preventDefault(); // Prevent the default form submission
+                event.target.closest('form').submit(); // Manually submit the form
+            }
+        }
+        
         document.addEventListener('trix-file-accept', function (e){
             e.preventDefault();
         })

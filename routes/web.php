@@ -1,9 +1,13 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PaymentTypeController;
+use App\Http\Controllers\PetTypeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductImageController;
 use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ServiceTypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,8 +41,21 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 // Logout (POST)
 Route::post('/logout', [LoginController::class, 'logout']);
 
+// --- Product ---
 // Products (Resource)
 Route::resource('/admin/product', ProductController::class);
 
 // Product Types (Resource)
 Route::resource('/admin/product-type', ProductTypeController::class);
+
+// Product Image (Resource)
+Route::resource('/admin/product-image', ProductImageController::class);
+
+// Service Type (Resource)
+Route::resource('/admin/service-type', ServiceTypeController::class);
+
+// Pet Type (Resource)
+Route::resource('/admin/pet-type', PetTypeController::class);
+
+// Payment Type (Resource)
+Route::resource('/admin/payment-type', PaymentTypeController::class);

@@ -68,7 +68,13 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('dashboard.products.show', [
+            "title" => "Material Details",
+            "product" => $product,
+            // Mengambil Galleries 'url' berdasarkan 'material_id' yang sedang dipilih
+            "images" => ProductImage::select('url')->where('product_id', '=', $product->id)->get(), 
+            "i" => 1
+        ]);
     }
 
     /**
