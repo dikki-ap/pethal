@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('pet_id');
-            $table->foreignId('service_id');
+            $table->foreignId('pet_type_id');
+            $table->foreignId('service_type_id');
             $table->foreignId('doctor_id');
-            $table->foreignId('payment_id');
+            $table->foreignId('payment_type_id');
             $table->integer('total');
             $table->dateTime('service_date');
             $table->timestamps();

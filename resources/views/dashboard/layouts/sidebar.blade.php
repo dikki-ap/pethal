@@ -21,23 +21,23 @@
             <ul class="list-unstyled p-2">
                 <li>
                     <button id="btnSideBar-Personnel" class="btn btn-toggle mt-3 align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#personnel-collapse" aria-expanded="true">
-                        <span data-feather="home"></span>&nbsp; Materials &nbsp;<i class="bi bi-caret-down-fill me-3"></i></span>
+                        <span data-feather="archive"></span>&nbsp; Products &nbsp;<i class="bi bi-caret-down-fill me-3"></i></span>
                     </button>
                     <div id="personnel-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal small">
                             <li>
                                 <a href="/dashboard/materials" class="sideBar-link" id="{{ Request::is('dashboard/materials*') ? 'sideBar-KList' : '' }}">
-                                    <span data-feather="list"></span>&nbsp; Material List
+                                    <span data-feather="list"></span>&nbsp; Product List
                                 </a>
                             </li>
                             <li>
                                 <a href="/dashboard/categories" class="sideBar-link" id="{{ Request::is('dashboard/categories*') ? 'sideBar-KList' : '' }}">
-                                    <span data-feather="grid"></span>&nbsp; Material Categories
+                                    <span data-feather="grid"></span>&nbsp; Product Type
                                 </a>
                             </li>
                             <li>
                                 <a href="/dashboard/galleries" class="sideBar-link" id="{{ Request::is('dashboard/galleries*') ? 'sideBar-KList' : '' }}">
-                                    <span data-feather="image"></span>&nbsp; Material Galleries
+                                    <span data-feather="image"></span>&nbsp; Product Image
                                 </a>
                             </li>
                         </ul>

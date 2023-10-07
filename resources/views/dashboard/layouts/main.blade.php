@@ -10,6 +10,9 @@
     {{-- Boostrap Icons --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
+    {{-- Favicon --}}
+    <link rel="shortcut icon" href="/img/favicon.png" type="image/png">
+
     {{-- Swiper JS --}}
     <link
     rel="stylesheet"

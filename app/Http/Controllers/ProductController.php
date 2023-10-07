@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductType;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -15,7 +16,8 @@ class ProductController extends Controller
     public function index()
     {
         return view('dashboard.products.index', [
-            "title" => "Product List"
+            "title" => "Product List",
+            "products" => Product::all()
         ]);
     }
 
@@ -26,7 +28,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.products.create', [
+            "title" => "Add Product",
+            "product_types" => ProductType::all()
+        ]);
     }
 
     /**
@@ -37,7 +42,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Menampung inputan user ke variabel $validatedData dengan fungsi validate()
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'product_type_id' => 'required',
+            'price' => 'required|numeric|min:1',
+            'description' => 'required'
+        ]);
+
+        
+        // Tambahkan data Product ke DB dengan fungsi create()
+        Product::create($validatedData);
+
+        // Redirect ke halaman yang ditentukan dan tampilkan pesan yang ditentukan
+        return redirect('/admin/product')->with('success', 'Successfully added new Product');
     }
 
     /**
@@ -59,7 +77,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        
     }
 
     /**
