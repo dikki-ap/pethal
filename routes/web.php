@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ArticleImageController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\GuestArticleController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaymentTypeController;
 use App\Http\Controllers\PetTypeController;
@@ -9,6 +12,7 @@ use App\Http\Controllers\ProductImageController;
 use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ServiceTypeController;
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,10 +27,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $articles = Article::take(3)->get();
     return view('home',[
-        "title" => "Home"
+        "title" => "Home",
+        "articles" => $articles
     ]);
 });
+
+Route::get('articles', [GuestArticleController::class, 'index']);
+
+Route::get('articles/{article:id}', [GuestArticleController::class, 'show']);
 
 // Register (View)
 Route::get('/register', [RegisterController::class, 'register']);
@@ -63,3 +73,9 @@ Route::resource('/admin/payment-type', PaymentTypeController::class);
 
 // Doctor (Resource)
 Route::resource('/admin/doctor', DoctorController::class);
+
+// Article (Resource)
+Route::resource('/admin/article', ArticleController::class);
+
+// Article Image (Resource)
+Route::resource('/admin/article-image', ArticleImageController::class);

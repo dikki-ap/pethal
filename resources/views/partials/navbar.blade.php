@@ -19,14 +19,14 @@
             <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Food</a>
+            <a class="nav-link active" aria-current="page" href="/products">Products</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"
-              >Medical</a>
+            <a class="nav-link active" aria-current="page" href="/services"
+              >Services</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Forum</a>
+            <a class="nav-link active" aria-current="page" href="/articles">Articles</a>
           </li>
         </ul>
         <a href="./" class="mx-auto"><img src="img/navbar_icon.jpg" class="img-fluid" width="143" alt="Logo" /></a>

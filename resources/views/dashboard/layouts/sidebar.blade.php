@@ -73,6 +73,29 @@
                 </a>
             </div>
 
+            {{-- Material --}}
+            <ul class="list-unstyled p-2">
+                <li>
+                    <button id="btnSideBar-Personnel" class="btn btn-toggle mt-3 align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#personnel-collapse" aria-expanded="true">
+                        <span data-feather="file-text"></span>&nbsp; Article &nbsp;<i class="bi bi-caret-down-fill me-3"></i></span>
+                    </button>
+                    <div id="personnel-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal small">
+                            <li>
+                                <a href="/admin/article" class="sideBar-link" id="{{ Request::is('admin/article') ? 'sideBar-KList' : '' }}">
+                                    <span data-feather="list"></span>&nbsp; Article List
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/admin/article-image" class="sideBar-link" id="{{ Request::is('admin/article-image*') ? 'sideBar-KList' : '' }}">
+                                    <span data-feather="image"></span>&nbsp; Article Image
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
             {{-- Logout --}}
             <div class="p-2">
                 <form action="/logout" method="POST">
