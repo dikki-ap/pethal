@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreignId('pet_type_id');
             $table->foreignId('service_type_id');
-            $table->foreignId('doctor_id');
+            $table->foreignId('doctor_id')->default(0);
             $table->foreignId('payment_type_id');
             $table->integer('total');
             $table->dateTime('service_date');

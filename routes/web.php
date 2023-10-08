@@ -2,16 +2,22 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ArticleImageController;
+use App\Http\Controllers\BuyProductController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\GuestArticleController;
+use App\Http\Controllers\GuestProductController;
+use App\Http\Controllers\GuestServiceController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentTypeController;
 use App\Http\Controllers\PetTypeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImageController;
 use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServiceTypeController;
+use App\Http\Controllers\TransactionController;
 use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
@@ -30,13 +36,23 @@ Route::get('/', function () {
     $articles = Article::take(3)->get();
     return view('home',[
         "title" => "Home",
-        "articles" => $articles
+        "articles" => $articles,
+        "articleCount" => Article::count()
     ]);
 });
 
 Route::get('articles', [GuestArticleController::class, 'index']);
 
 Route::get('articles/{article:id}', [GuestArticleController::class, 'show']);
+
+Route::get('products', [GuestProductController::class, 'index']);
+
+Route::get('products/{product:id}', [GuestProductController::class, 'show']);
+
+Route::get('services', [GuestServiceController::class, 'index']);
+
+Route::get('services/{serviceType:id}', [GuestServiceController::class, 'show']);
+
 
 // Register (View)
 Route::get('/register', [RegisterController::class, 'register']);
@@ -79,3 +95,12 @@ Route::resource('/admin/article', ArticleController::class);
 
 // Article Image (Resource)
 Route::resource('/admin/article-image', ArticleImageController::class);
+
+// Service (Resource)
+Route::resource('/user/services', ServiceController::class);
+
+// Transaction (Resource)
+Route::resource('/user/transactions', TransactionController::class);
+
+// Payment (Resource)
+Route::resource('/user/payments', PaymentController::class);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\ProductType;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -123,22 +124,28 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        // Ambil semua Galleries dari Material berdasarkan 'material_id'
-        $productImages = ProductImage::select('*')->where('product_id', '=', $product->id)->get();
+        $transactionsCount = Transaction::where('product_id', $product->id)->count();
+        if($transactionsCount > 0){
+            return redirect('/admin/product')->with('error', 'Can\'t Delete Product Because There\'s a Data Related to This Product');
+        }else{
+            // Ambil semua Galleries dari Material berdasarkan 'material_id'
+            $productImages = ProductImage::select('*')->where('product_id', '=', $product->id)->get();
 
-        // Lakukan looping dengan foreach karena data berbentuk Array Assocative
-        foreach($productImages as $productImage){
-            // Hapus Gallery dari DB berdasarkan 'id'
-            ProductImage::destroy($productImage->id);
+            // Lakukan looping dengan foreach karena data berbentuk Array Assocative
+            foreach($productImages as $productImage){
+                // Hapus Gallery dari DB berdasarkan 'id'
+                ProductImage::destroy($productImage->id);
 
-            // Hapus file Gallery dari Storage berdasarkan 'url'
-            Storage::delete($productImage->url);
+                // Hapus file Gallery dari Storage berdasarkan 'url'
+                Storage::delete($productImage->url);
+            }
+
+            // Hapus Material dari DB berdasrkan 'id'
+            Product::destroy($product->id);
+
+            // Redirect ke halaman yang ditentukan dan tampilkan pesan yang ditentukan
+            return redirect('/admin/product')->with('success', 'Product Has Been Successfully Deleted');
         }
-
-        // Hapus Material dari DB berdasrkan 'id'
-        Product::destroy($product->id);
-
-        // Redirect ke halaman yang ditentukan dan tampilkan pesan yang ditentukan
-        return redirect('/admin/product')->with('success', 'Product Has Been Successfully Deleted');
+        
     }
 }

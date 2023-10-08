@@ -31,7 +31,7 @@
                 @foreach ($articles as $article)
                     <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $article->title }}</td>
+                    <td>{{ $article->short_title }}</td>
                     <td>
                         <a href="/admin/article/{{ $article->id }}" class="badge bg-primary">
                             <span data-feather="eye"></span>

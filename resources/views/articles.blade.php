@@ -92,6 +92,7 @@
                         @if (Auth::user()->role == 'Admin')
                         <li><a class="dropdown-item" href="/admin/product"><i class="bi bi-clipboard2-data-fill"></i></i>&nbsp; Dashboard</a></li>
                         @endif
+                        <li><a class="dropdown-item" href="/user/payments"><i class="bi bi-gear"></i>&nbsp; Setting</a></li>
                         <li>
                             <form action="/logout" method="POST">
                             @csrf
@@ -110,27 +111,42 @@
       </div>
     </div>
   </nav>
+
+{{-- End of Pagination --}}
 <!-- Navbar End --->
-    <div class="container-fluid mt-5">
-        <div class="row">
-            @foreach ($articles as $article)
-            <div class="col d-flex justify-content-around">
-                <div class="card">
-                    @if ($article->galleries->isNotEmpty())
-                        @php $firstImageUrl = $article->galleries->first()->url; @endphp
-                        <a href="/articles/{{ $article->id }}"><img src="{{ $firstImageUrl }}" alt="Image" class="img-fluid"></a> 
-                        
-                    @endif
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $article->title }}</h5>
-                        <p class="card-text">{{ $article->excerpt }}</p>           
-                    </div>
-                </div>
-            </div>
-            @endforeach
+    @if ($articleCount > 0)
+        <div class="container mt-5">
+          <div class="row">
+              @foreach ($articles as $article)
+              <div class="col d-flex justify-content-start my-5">
+                  <div class="card">
+                      @if ($article->galleries->isNotEmpty())
+                          @php $firstImageUrl = $article->galleries->first()->url; @endphp
+                          <a href="/articles/{{ $article->id }}" class="text-center"><img src="{{ $firstImageUrl }}" alt="Image" class="img-fluid" width="275"></a> 
+                          
+                      @endif
+                      <div class="card-body text-center">
+                          <h5 class="card-title">{{ $article->short_title }}</h5>
+                          <p class="card-text">{{ $article->excerpt }}</p>
+                          <a href="/articles/{{ $article->id }}" class="btn btn-primary" style="background-color: #4dab6e; border-color: #FEF5ED">Read More</a>
+                      </div>
+                  </div>
+              </div>
+              @endforeach
+          </div>
+        {{-- Pagination --}}
+      <div class="container">
+        <div class="d-flex justify-content-start">
+            {{ $articles->links( ) }}
         </div>
-        
-    </div>
+      </div>
+          
+      </div>
+    @else
+      <div class="container mt-5">
+        <h1>Currently there's no article</h1>
+      </div>
+    @endif
     {{-- Bootstrap JS --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 

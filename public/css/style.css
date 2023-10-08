@@ -20,6 +20,8 @@
   background-image: url(/styles/img/wave.png);
   background-size: cover;
 } */
+
+
 .col-lg-6 {
   font-family: 'Sen', sans-serif;
 }
@@ -40,7 +42,7 @@
 .btn  {
   border-radius: 40px;
   margin-top: 9px;
-  margin-left: 100px;
+  /* margin-left: 100px; */
   font-family: 'Sen', sans-serif;
 }
 .container2  {

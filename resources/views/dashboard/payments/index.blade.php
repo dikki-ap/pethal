@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('dashboard.layouts.user_main')
 
 @section('container')
 
@@ -24,7 +24,7 @@
         </div>
         @endif
 
-        <a href="/admin/payment-type/create" class="btn btn-primary border-0 my-3" style="background-color: #4dab6e; border-color: #FEF5ED"><span data-feather="file-plus"></span>&nbsp; Add New Payment Type</a>
+        <a href="/user/payments/create" class="btn btn-primary border-0 my-3" style="background-color: #4dab6e; border-color: #FEF5ED"><span data-feather="file-plus"></span>&nbsp; Add New Payment Type</a>
 
         <table class="table table-striped table-sm">
             <thead>
@@ -38,12 +38,9 @@
                 @foreach ($payment_types as $payment_type)
                     <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $payment_type->name }}</td>
+                    <td>{{ $payment_type->payment_type->name }}</td>
                     <td>
-                        <a href="/admin/payment-type/{{ $payment_type->id }}/edit" class="badge bg-success">
-                            <span data-feather="edit"></span>
-                        </a>
-                        <form action="/admin/payment-type/{{ $payment_type->id }}" method="POST" class="d-inline">
+                        <form action="/user/payments/{{ $payment_type->id }}" method="POST" class="d-inline">
                             @method('delete')
                             @csrf
 

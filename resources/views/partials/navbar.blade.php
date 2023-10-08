@@ -43,8 +43,9 @@
                     </a>
                     <ul class="dropdown-menu">
                         @if (Auth::user()->role == 'Admin')
-                        <li><a class="dropdown-item" href="/admin/product"><i class="bi bi-clipboard2-data-fill"></i></i>&nbsp; Dashboard</a></li>
+                        <li><a class="dropdown-item" href="/admin/product"><i class="bi bi-clipboard2-data-fill"></i>&nbsp; Dashboard</a></li>
                         @endif
+                        <li><a class="dropdown-item" href="/user/payments"><i class="bi bi-gear"></i>&nbsp; Setting</a></li>
                         <li>
                             <form action="/logout" method="POST">
                             @csrf

@@ -4,24 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\ArticleImage;
+use Illuminate\Support\Carbon;
 
 class GuestArticleController extends Controller
 {
     public function index(){
-        // $images = ArticleImage::select('url')->where('article_id', '=', $article->id)->get();
-        // dd($images);
+        $articles = Article::with('galleries')->latest()->paginate(6);
+    
         return view('articles', [
             "title" => "All Articles",
-            "articles" => Article::latest()->paginate(7)
+            "articles" => $articles,
+            "articleCount" => Article::count()
         ]);
     }
     public function show(Article $article){
-        // $images = ArticleImage::select('url')->where('article_id', '=', $article->id)->get();
-        // dd($images);
         return view('article', [
             "title" => $article->title,
             "article" => $article,
-            "images" => ArticleImage::select('url')->where('article_id', '=', $article->id)->get(),
+            "images" => ArticleImage::select('url')->where('article_id', '=', $article->id)->get()
         ]);
     }
 }

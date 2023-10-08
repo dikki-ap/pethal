@@ -19,7 +19,7 @@
         <div class="col-lg-6 mt-4 ">
         <h1 class="word"> Caring your pet</h1>
         <p class="word leading-relaxed">Here you get easiness</p>
-        <a href="/register" class="btn btn-outline-dark" role="button">Lets Start!</a>
+        <a href="/services" class="btn btn-outline-dark" role="button" style="margin-left: 6.7rem">Lets Start!</a>
         </div>
         <div class="col-lg-6">
         <img src="/img/image_1.png" style="width: 378px; margin-left: 180px;" alt="Ilustrasi Kucing">
@@ -55,26 +55,30 @@
 @endsection
 
 @section('container-3')
-<p class="b-titles d-flex justify-content-center">It's Articles!</p>
-<p class="s-titles d-flex justify-content-center">Find your news here..</p>
-<div class="row justify-content-center p-5 mx-5">
-    
-    <div class="row">
-        @foreach ($articles as $article)
-        <div class="col d-flex justify-content-around">
-            <div class="card">
-                @if ($article->galleries->isNotEmpty())
-                    @php $firstImageUrl = $article->galleries->first()->url; @endphp
-                    <a href="/articles/{{ $article->id }}"><img src="{{ $firstImageUrl }}" alt="Image" class="img-fluid"></a> 
-                    
-                @endif
-                <div class="card-body">
-                    <h5 class="card-title">{{ $article->title }}</h5>
-                    <p class="card-text">{{ $article->excerpt }}</p>           
+@if ($articleCount > 0)
+    <p class="b-titles d-flex justify-content-center">It's Articles!</p>
+    <p class="s-titles d-flex justify-content-center">Find your news here..</p>
+    <div class="row justify-content-center p-5 mx-5">
+        
+        <div class="row">
+            @foreach ($articles as $article)
+            <div class="col d-flex justify-content-around">
+                <div class="card">
+                    @if ($article->galleries->isNotEmpty())
+                        @php $firstImageUrl = $article->galleries->first()->url; @endphp
+                        <a href="/articles/{{ $article->id }}" class="text-center"><img src="{{ $firstImageUrl }}" alt="Image" class="img-fluid" width="275"></a>
+                        
+                    @endif
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $article->short_title }}</h5>
+                        <p class="card-text">{{ $article->excerpt }}</p>     
+                        <a href="/articles/{{ $article->id }}" class="btn btn-primary" style="background-color: #4dab6e; border-color: #FEF5ED">Read More</a>      
+                    </div>
                 </div>
             </div>
+            @endforeach
         </div>
-        @endforeach
     </div>
-</div>
+@endif
+
 @endsection

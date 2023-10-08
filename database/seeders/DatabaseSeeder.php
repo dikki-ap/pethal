@@ -5,6 +5,8 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Day;
+use App\Models\Doctor;
+use App\Models\PaymentType;
 use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\User;
@@ -53,6 +55,18 @@ class DatabaseSeeder extends Seeder
 
         ProductType::create([
             "name" => "Accessories"
+        ]);
+
+        PaymentType::create([
+            "name" => "DANA"
+        ]);
+
+        PaymentType::create([
+            "name" => "GoPay"
+        ]);
+
+        PaymentType::create([
+            "name" => "OVO"
         ]);
 
         Product::create([

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\ProductType;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -109,43 +110,49 @@ class ProductTypeController extends Controller
      */
     public function destroy(ProductType $productType)
     {
-        // Ambil jumlah Material berdasarkan Category ID
-        $productsCount = Product::where('product_type_id', $productType->id)->count();
-
-        // Ambil semua Material berdasarkan Category ID
-        $products = Product::select('*')->where('product_type_id', '=', $productType->id)->get();  
-
-        // Jika ada Material dengan Category ID yang sama
-        if($productsCount > 0){
-            // Looping semua Material untuk mendapatkan Material ID
-            foreach($products as $product){
-                // Ambil semua Gallery berdasarkan Material ID
-                $productImages = ProductImage::select('*')->where('product_id', '=', $product->id)->get();
-                
-                // Lakukan looping dengan foreach karena data berbentuk Array Assocative
-                foreach($productImages as $productImage){
-                    // Hapus Gallery dari DB berdasarkan 'id'
-                    ProductImage::destroy($productImage->id);
-
-                    // Hapus file Gallery dari Storage berdasarkan 'url'
-                    Storage::delete($productImage->url);
-                }
-
-                // Hapus Material dari DB berdasrkan 'id'
-                Product::destroy($product->id);
-            }
-            
-            // Menghapus data Category dari DB dengan fungsi destroy() berdasarkan field 'id'
-            ProductType::destroy($productType->id);
-
-            // Redirect ke halaman yang ditentukan dan tampilkan pesan yang ditentukan
-            return redirect('/admin/product-type')->with('success', 'Product Type and It\'s Related Product Have Been Successfully Deleted');
+        $transactionsCount = Transaction::where('product_type_id', $productType->id)->count();
+        if($transactionsCount > 0){
+            return redirect('/admin/product-type')->with('error', 'Can\'t Delete Product Type Because There\'s a Data Related to This Product Type');
         }else{
-            // Menghapus data Category dari DB dengan fungsi destroy() berdasarkan field 'id'
-            ProductType::destroy($productType->id);
+            // Ambil jumlah Material berdasarkan Category ID
+            $productsCount = Product::where('product_type_id', $productType->id)->count();
 
-            // Redirect ke halaman yang ditentukan dan tampilkan pesan yang ditentukan
-            return redirect('/admin/product-type')->with('success', 'Product Type Has Been Successfully Deleted');
+            // Ambil semua Material berdasarkan Category ID
+            $products = Product::select('*')->where('product_type_id', '=', $productType->id)->get();  
+
+            // Jika ada Material dengan Category ID yang sama
+            if($productsCount > 0){
+                // Looping semua Material untuk mendapatkan Material ID
+                foreach($products as $product){
+                    // Ambil semua Gallery berdasarkan Material ID
+                    $productImages = ProductImage::select('*')->where('product_id', '=', $product->id)->get();
+                    
+                    // Lakukan looping dengan foreach karena data berbentuk Array Assocative
+                    foreach($productImages as $productImage){
+                        // Hapus Gallery dari DB berdasarkan 'id'
+                        ProductImage::destroy($productImage->id);
+
+                        // Hapus file Gallery dari Storage berdasarkan 'url'
+                        Storage::delete($productImage->url);
+                    }
+
+                    // Hapus Material dari DB berdasrkan 'id'
+                    Product::destroy($product->id);
+                }
+                
+                // Menghapus data Category dari DB dengan fungsi destroy() berdasarkan field 'id'
+                ProductType::destroy($productType->id);
+
+                // Redirect ke halaman yang ditentukan dan tampilkan pesan yang ditentukan
+                return redirect('/admin/product-type')->with('success', 'Product Type and It\'s Related Product Have Been Successfully Deleted');
+            }else{
+                // Menghapus data Category dari DB dengan fungsi destroy() berdasarkan field 'id'
+                ProductType::destroy($productType->id);
+
+                // Redirect ke halaman yang ditentukan dan tampilkan pesan yang ditentukan
+                return redirect('/admin/product-type')->with('success', 'Product Type Has Been Successfully Deleted');
+            }
         }
+        
     }
 }

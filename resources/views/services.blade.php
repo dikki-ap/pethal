@@ -111,64 +111,45 @@
       </div>
     </div>
   </nav>
+
 <!-- Navbar End --->
-    <div class="container-fluid mt-5">
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-8">
-                <h2 class="mb-3" style="color: #4dab6e">{{ $article->title }}</h2>
-                <p class="text-muted"><i class="bi bi-clock"></i> &nbsp; Published at {{ $article->created_at->diffForHumans() }}</p>
-                <hr>
-    
-                {{-- Swiper Galleries --}}
-                <div class="swiper text-center">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper">
-                    <!-- Slides -->
-                    @foreach ($images as $image)
-                    <div class="swiper-slide">
-                        <img src="{{ asset('storage/' . $image->url) }}" alt="{{ $image->url }}" alt="{{ $image->url }}" class="img-fluid rounded-3 mb-5" width="700">
-                    </div>
-                    @endforeach
-                    
-    
-                    </div>
-                    <!-- If we need pagination -->
-                    <div class="swiper-pagination"></div>
-                
-                    <!-- If we need navigation buttons -->
-                    <div class="swiper-button-prev" style="color: #4dab6e"></div>
-                    <div class="swiper-button-next" style="color: #4dab6e"></div>
-                </div>
-                {{-- End of Swiper Galleries --}}
-    
-                <hr>
-    
-                <h4 class="mb-3" style="color: #4dab6e">Description</h4>
-    
-                {{-- Menggunakan >> {!!  !!} Dikarenakan bisa saja di dalam artikel terdapat TAG HTML --}}
-                {{-- Menggunakan >> {{  }} terdapat htmlspesialchars() untuk menghindari penggunaan TAG HTML di dalamnya --}}
-                {{-- SESUAIKAN DENGAN KONDISI --}}
-                <article class="my-3 fs-5 article" style="max-width: 100%; overflow: hidden; word-wrap: break-word;">
-                  <p>{!! $article->description !!}</p>
-                </article>
-              
-    
-                <div class="row text-center mt-5">
-                    <div class="col">
-                        <a href="/articles" class="btn btn-primary border-0" style="background-color: #4dab6e; border-color: #FEF5ED"><span data-feather="chevrons-left"></span>&nbsp; Back to Article List</a>
+    @if ($serviceCount > 0)
+        <div class="container mt-5">
+            <div class="row">
+                @foreach ($services as $service)
+                <div class="col d-flex justify-content-start my-5">
+                    <div class="card">
+                        <a href="/services/{{ $service->id }}" class="text-center"><img src="../img/services.png" alt="Image" class="img-fluid" width="300"></a>
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-center">{{ $service->name }}</h5>
+                            <h6 class="card-text"><i class="bi bi-tags-fill"></i> &nbsp; Rp. {{ $service->price }}</h6>
+                            <h6 class="card-text">
+                                @if($service->isNeedDoctor == 1)
+                                <i class="bi bi-person-check-fill"></i> &nbsp; Doctor: Yes
+                                @else
+                                <i class="bi bi-person-x-fill"></i> &nbsp; Doctor: No
+                                @endif
+                            </h6>
+                            <a href="/services/{{ $service->id }}" class="btn btn-primary" style="background-color: #4dab6e; border-color: #FEF5ED">Details</a>
+                        </div>
                     </div>
                 </div>
-                
+                @endforeach
+            </div>
+
+        {{-- Pagination --}}
+        <div class="container">
+            <div class="d-flex justify-content-start">
+                {{ $services->links( ) }}
             </div>
         </div>
-    </div>
-
-    <footer>
-        <div class="footer">
-          <hr/>
-          <p class="text-center">2023 All Rights Reserved by <a href="/" id="footer-credit">PetHal</a></p>
+    @else
+        <div class="container mt-5">
+            <h1>Currently there's no service</h1>
         </div>
-      </footer>
+    @endif
+        
+    </div>
     {{-- Bootstrap JS --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 

@@ -93,11 +93,11 @@
                         <li><a class="dropdown-item" href="/admin/product"><i class="bi bi-clipboard2-data-fill"></i></i>&nbsp; Dashboard</a></li>
                         @endif
                         <li><a class="dropdown-item" href="/user/payments"><i class="bi bi-gear"></i>&nbsp; Setting</a></li>
-                        <li>
+                        {{-- <li>
                             <form action="/logout" method="POST">
                             @csrf
                             <button type="submit" class="dropdown-item" style="color: #a52b2a"><i class="bi bi-box-arrow-right"></i>&nbsp; Logout</button>
-                        </li>
+                        </li> --}}
                     {{-- <li><a class="dropdown-item" href="/logout" style="color: crimson;"><i class="bi bi-box-arrow-left"></i>&nbsp; Logout</a></li> --}}
                     </ul>
                 </li>
@@ -115,8 +115,9 @@
     <div class="container-fluid mt-5">
         <div class="row justify-content-center mb-5">
             <div class="col-md-8">
-                <h2 class="mb-3" style="color: #4dab6e">{{ $article->title }}</h2>
-                <p class="text-muted"><i class="bi bi-clock"></i> &nbsp; Published at {{ $article->created_at->diffForHumans() }}</p>
+                <h2 class="mb-3" style="color: #4dab6e">{{ $product->name }}</h2>
+                <h6 class="card-text"><i class="bi bi-box"></i></i> &nbsp; Category: {{ $product->product_type->name }}</h6>
+                <h6 class="card-text"><i class="bi bi-tags-fill"></i> &nbsp; Rp. {{ $product->price }}</h6>
                 <hr>
     
                 {{-- Swiper Galleries --}}
@@ -148,15 +149,86 @@
                 {{-- Menggunakan >> {!!  !!} Dikarenakan bisa saja di dalam artikel terdapat TAG HTML --}}
                 {{-- Menggunakan >> {{  }} terdapat htmlspesialchars() untuk menghindari penggunaan TAG HTML di dalamnya --}}
                 {{-- SESUAIKAN DENGAN KONDISI --}}
-                <article class="my-3 fs-5 article" style="max-width: 100%; overflow: hidden; word-wrap: break-word;">
-                  <p>{!! $article->description !!}</p>
+                <article class="my-3 fs-5">
+                    <p>{!! $product->description !!}</p>
                 </article>
-              
     
                 <div class="row text-center mt-5">
                     <div class="col">
-                        <a href="/articles" class="btn btn-primary border-0" style="background-color: #4dab6e; border-color: #FEF5ED"><span data-feather="chevrons-left"></span>&nbsp; Back to Article List</a>
+                        <a href="/products" class="btn btn-primary border-0" style="background-color: #4dab6e; border-color: #FEF5ED"><span data-feather="chevrons-left"></span>&nbsp; Back to Product List</a>
                     </div>
+
+                    @if (Auth::check())
+                    <div class="col">
+                        <!-- Button Add Image Modal -->
+                        <button type="button" class="badge border-0" data-bs-toggle="modal" data-bs-target="#addImage-{{ $product->id }}" style="background-color: #4dab6e; font-size: 1rem">
+                            <span data-feather="plus-circle"></span> Buy Product
+                        </button>
+
+                        <!-- Add Image Modal -->
+                        <div class="modal fade" id="addImage-{{ $product->id }}" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Buy <span class="fw-bold" style="color: #4dab6e">{{ $product->name }}</span></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <form action="/user/transactions" method="POST" enctype="multipart/form-data" class="mb-5">
+                                                @csrf
+                                                <input type="hidden" name="product_id" id="product_id" value="{{ $product->id }}">
+                                                <input type="hidden" name="product_type_id" id="product_type_id" value="{{ $product->product_type_id }}">
+                                                <input type="hidden" name="price" id="price" value="{{ $product->price }}">
+                                                <input type="hidden" name="transaction_date" id="transaction_date" value="{{ $transaction_date }}">
+
+                                                <div class="mb-3">
+                                                    <input type="text" name="product_name" class="form-control" id="product_name" readonly value="{{ $product->name }}">
+                                                </div>
+
+                                                {{-- Phone --}}
+                                                <div class="form-floating">
+                                                    <input type="number" minlength="1" maxlength="2" min="1" max="99" name="quantity" class="form-control @error('quantity')
+                                                        is-invalid
+                                                    @enderror" id="quantity" placeholder="quantity" autofocus required value="{{ old('quantity') }}">
+                                                    <label for="quantity">Quantity</label>
+                                                    @error('quantity')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+
+                                                {{-- Payment Type --}}
+                                                <div class="form-floating">
+                                                    <select class="form-select @error('payment_type_id')
+                                                    is-invalid
+                                                @enderror" name="payment_type_id" required>
+                                                @error('payment_type_id')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                @enderror
+                                                    {{-- Looping Pet Kategori --}}
+                                                    @foreach ($payments as $payment)
+                                                        <option value="{{ $payment->payment_type->id }}">{{ $payment->payment_type->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                    <label for="name">Payment Type</label>
+                                                </div>
+
+                                                <div class=" mt-3 text-center">
+                                                    <button type="submit" class="btn btn-primary border-0" style="background-color: #4dab6e; border-color: #FEF5ED"><span data-feather="plus-circle"></span>&nbsp; Buy Product</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- End of Add Image Modal --}}
+                    </div>
+                    @endif
                 </div>
                 
             </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Day;
 use App\Models\Doctor;
 use App\Models\Schedule;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -148,10 +149,16 @@ class DoctorController extends Controller
      */
     public function destroy(Doctor $doctor)
     {
-        Doctor::destroy($doctor->id);
-        Schedule::where('doctor_id', $doctor->id)->delete();
-
-        // Redirect ke halaman yang ditentukan dan tampilkan pesan yang ditentukan
-        return redirect('/admin/doctor')->with('success', 'Pet Type Has Been Successfully Deleted');
+        $servicesCount = Service::where('doctor_id', $doctor->id)->count();
+        if($servicesCount > 0){
+            return redirect('/admin/doctor')->with('error', 'Can\'t Delete Doctor Because There\'s a Data Related to This Doctor');
+        }else{
+            Doctor::destroy($doctor->id);
+            Schedule::where('doctor_id', $doctor->id)->delete();
+    
+            // Redirect ke halaman yang ditentukan dan tampilkan pesan yang ditentukan
+            return redirect('/admin/doctor')->with('success', 'Doctor Has Been Successfully Deleted');
+        }
+        
     }
 }
