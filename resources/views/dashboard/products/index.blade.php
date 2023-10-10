@@ -35,7 +35,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->product_type->name }}</td>
-                    <td>{{ $product->price }}</td>
+                    <td>Rp. {{ $product->price }}</td>
                     <td>
                         <a href="/admin/product/{{ $product->id }}" class="badge bg-primary">
                             <span data-feather="eye"></span>

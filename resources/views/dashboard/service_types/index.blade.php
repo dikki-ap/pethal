@@ -41,7 +41,7 @@
                     <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $service_type->name }}</td>
-                    <td>{{ $service_type->price }}</td>
+                    <td>Rp. {{ $service_type->price }}</td>
                     <td>
                         @if ($service_type->isNeedDoctor == 1)
                             Yes
