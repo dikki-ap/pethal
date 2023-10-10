@@ -49,7 +49,7 @@
                 
                 <div class="row text-center">
                     <div class="col">
-                        <a href="/dashboard/materials" class="btn btn-primary border-0 text-center mt-5" style="background-color: #4dab6e; border-color: #FEF5ED"><span data-feather="chevrons-left"></span>&nbsp; Back to Product List</a>
+                        <a href="/admin/product" class="btn btn-primary border-0 text-center mt-5" style="background-color: #4dab6e; border-color: #FEF5ED"><span data-feather="chevrons-left"></span>&nbsp; Back to Product List</a>
                     </div>
                 </div>
                 

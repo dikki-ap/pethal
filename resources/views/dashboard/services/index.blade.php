@@ -29,13 +29,14 @@
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
-                <th scope="col">No</th>
-                <th scope="col">Service</th>
-                <th scope="col">Pet Type</th>
-                <th scope="col">Doctor</th>
-                <th scope="col">Payment <span class="typcn typcn-beaker"></span></th>
-                <th scope="col">Total</th>
-                <th scope="col">Date</th>
+                <th scope="col"><strong>No</strong></th>
+                <th scope="col"><strong>Service</strong></th>
+                <th scope="col"><strong>Pet Type</strong></th>
+                <th scope="col"><strong>Doctor</strong></th>
+                <th scope="col"><strong>Service Schedule</strong></th>
+                <th scope="col"><strong></strong></th>
+                <th scope="col"><strong>Total</strong></th>
+                <th scope="col"><strong>Order Created</strong></th>
                 </tr>
             </thead>
             <tbody>
@@ -51,8 +52,17 @@
                             {{ $service->doctor->name }}
                             @endif
                         </td>
+                        <td>
+                            @if ($service->service_type->isNeedDoctor == 0)
+                                -
+                            @else
+                                @foreach($service->doctor->schedules as $schedule)
+                                    {{ $schedule->day->name }}
+                                @endforeach
+                            @endif
+                        </td>
                         <td>{{ $service->payment_type->name }}</td>
-                        <td>{{ $service->total }}</td>
+                        <td>Rp. {{ $service->total }}</td>
                         <td>{{ \Carbon\Carbon::parse($service->service_date)->formatLocalized('%A, %d %B %Y') }}</td>
                     </tr>
                 @endforeach

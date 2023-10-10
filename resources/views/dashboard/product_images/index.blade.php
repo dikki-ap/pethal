@@ -26,13 +26,13 @@
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
-                <th scope="col">No</th>
-                <th scope="col">Name</th>
-                <th scope="col">Product Type</th>
-                <th scope="col">Add Image</th>
-                <th scope="col">Details</th>
-                <th scope="col">Edit Image</th>
-                <th scope="col">Delete Image</th>
+                <th scope="col"><strong>No</strong></th>
+                <th scope="col"><strong>Name</strong></th>
+                <th scope="col"><strong>Product Type</strong></th>
+                <th scope="col"><strong>Add Image</strong></th>
+                <th scope="col"><strong>Details</strong></th>
+                <th scope="col"><strong>Edit Image</strong></th>
+                <th scope="col"><strong>Delete Image</strong></th>
                 </tr>
             </thead>
             <tbody>

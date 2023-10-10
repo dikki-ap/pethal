@@ -17,16 +17,23 @@
         </div>
         @endif
 
+        {{-- Flash Message Post Added Success --}}
+        @if (session()->has('error'))
+        <div class="alert alert-danger text-center" role="alert">
+            {{ session('error') }}
+        </div>
+        @endif
+
         <a href="/admin/doctor/create" class="btn btn-primary border-0 my-3" style="background-color: #4dab6e; border-color: #FEF5ED"><span data-feather="file-plus"></span>&nbsp; Add New Doctor</a>
 
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
-                <th scope="col">No</th>
-                <th scope="col">Name</th>
-                <th scope="col">Specialist</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Action</th>
+                <th scope="col"><strong>No</strong></th>
+                <th scope="col"><strong>Name</strong></th>
+                <th scope="col"><strong>Specialist</strong></th>
+                <th scope="col"><strong>Phone</strong></th>
+                <th scope="col"><strong>Action</strong></th>
                 </tr>
             </thead>
             <tbody>

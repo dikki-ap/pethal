@@ -69,13 +69,6 @@ class DatabaseSeeder extends Seeder
             "name" => "OVO"
         ]);
 
-        Product::create([
-            "name" => "Cat Choize 1KG",
-            "product_type_id" => 1,
-            "price" => 26000,
-            "description" => "Makanan kucing 1KG cocok untuk kitten dan kucing dewasa"
-        ]);
-
         Day::create([
             "name" => "Monday",
         ]);

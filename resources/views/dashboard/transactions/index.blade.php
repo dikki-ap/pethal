@@ -29,13 +29,13 @@
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
-                <th scope="col">No</th>
-                <th scope="col">Product</th>
-                <th scope="col">Product Type</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Total</th>
-                <th scope="col">Payment Type</th>
-                <th scope="col">Date</th>
+                <th scope="col"><strong>No</strong></th>
+                <th scope="col"><strong>Product</strong></th>
+                <th scope="col"><strong>Product Type</strong></th>
+                <th scope="col"><strong>Payment Type</strong></th>
+                <th scope="col"><strong>Quantity</strong></th>
+                <th scope="col"><strong></strong></th>
+                <th scope="col"><strong>Order Created</strong></th>
                 </tr>
             </thead>
             <tbody>
@@ -44,9 +44,9 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $transaction->product->name }}</td>
                         <td>{{ $transaction->product_type->name }}</td>
-                        <td>{{ $transaction->quantity}}</td>
-                        <td>{{ $transaction->total }}</td>
                         <td>{{ $transaction->payment_type->name }}</td>
+                        <td>{{ $transaction->quantity}}</td>
+                        <td>Rp. {{ $transaction->total }}</td>
                         <td>{{ \Carbon\Carbon::parse($transaction->transaction_date)->formatLocalized('%A, %d %B %Y') }}</td>
                     </tr>
                 @endforeach

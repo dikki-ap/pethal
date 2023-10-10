@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Storage;
 
 class ArticleImageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('IsAdmin:Admin');
+    }
     /**
      * Display a listing of the resource.
      *

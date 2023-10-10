@@ -29,11 +29,11 @@
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
-                <th scope="col">No</th>
-                <th scope="col">Name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Doctor Required</th>
-                <th scope="col">Action</th>
+                <th scope="col"><strong>No</strong></th>
+                <th scope="col"><strong>Name</strong></th>
+                <th scope="col"><strong>Price</strong></th>
+                <th scope="col"><strong>Doctor Required</strong></th>
+                <th scope="col"><strong>Action</strong></th>
                 </tr>
             </thead>
             <tbody>

@@ -76,10 +76,10 @@
             {{-- Material --}}
             <ul class="list-unstyled p-2">
                 <li>
-                    <button id="btnSideBar-Personnel" class="btn btn-toggle mt-3 align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#personnel-collapse" aria-expanded="true">
+                    <button id="btnSideBar-Personnel" class="btn btn-toggle mt-3 align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#article-collapse" aria-expanded="true">
                         <span data-feather="file-text"></span>&nbsp; Article &nbsp;<i class="bi bi-caret-down-fill me-3"></i></span>
                     </button>
-                    <div id="personnel-collapse">
+                    <div id="article-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal small">
                             <li>
                                 <a href="/admin/article" class="sideBar-link" id="{{ Request::is('admin/article') ? 'sideBar-KList' : '' }}">

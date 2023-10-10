@@ -22,9 +22,9 @@
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
-                <th scope="col">No</th>
-                <th scope="col">Title</th>
-                <th scope="col">Action</th>
+                <th scope="col"><strong>No</strong></th>
+                <th scope="col"><strong>Title</strong></th>
+                <th scope="col"><strong></strong></th>
                 </tr>
             </thead>
             <tbody>

@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -213,9 +214,10 @@
                                                     @enderror
                                                         {{-- Looping Pet Kategori --}}
                                                         @foreach ($doctors as $doctor)
-                                                            <option value="{{ $doctor->id }}">{{ $doctor->name }} - @foreach($doctor->schedules as $schedule)
+                                                            <option value="{{ $doctor->id }}">{{ $doctor->name }} ({{ $doctor->specialist }}) - @foreach($doctor->schedules as $schedule)
                                                                 {{ $schedule->day->name }}
-                                                            @endforeach</option>
+                                                            @endforeach
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                         <label for="name">Doctor</label>
