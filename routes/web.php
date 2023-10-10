@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ArticleImageController;
-use App\Http\Controllers\BuyProductController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\GuestArticleController;
 use App\Http\Controllers\GuestProductController;
