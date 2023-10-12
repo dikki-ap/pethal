@@ -7,6 +7,7 @@ use App\Models\PaymentType;
 use App\Models\Service;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PaymentController extends Controller
 {
@@ -110,20 +111,17 @@ class PaymentController extends Controller
      * @param  \App\Models\PaymentType  $paymentType
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(Request $request)
     {
         $user_id = auth()->user()->id;
-        // Ambil jumlah Material berdasarkan Category ID
-        $servicesCount = Service::where('user_id', $user_id)->count();
-        $transactionsCount = Transaction::where('user_id', $user_id)->count();
-        if($servicesCount > 0 || $transactionsCount > 0){
-            // Redirect ke halaman yang ditentukan dan tampilkan pesan yang ditentukan
-            return redirect('/user/payments')->with('error', 'Can\'t Delete Payment Type Because There\'s a Data Related to This Payment Type');
-        }else{
-            Payment::destroy($user_id);
+        $payment_type_id = (int)$request['payment_type_id'];
 
-            // Redirect ke halaman yang ditentukan dan tampilkan pesan yang ditentukan
-            return redirect('/user/payments')->with('success', 'Payment Type Has Been Successfully Deleted');
-        }
+        DB::transaction(function () use ($user_id, $payment_type_id) {
+            Payment::where('user_id', $user_id)->where('payment_type_id', $payment_type_id)->delete();
+            Transaction::where('user_id', $user_id)->where('payment_type_id', $payment_type_id)->delete();
+            Service::where('user_id', $user_id)->where('payment_type_id', $payment_type_id)->delete();
+        });
+
+        return redirect('/user/payments')->with('success', 'Payment Type Has Been Successfully Deleted');
     }
 }

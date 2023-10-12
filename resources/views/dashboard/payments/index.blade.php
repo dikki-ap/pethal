@@ -43,6 +43,7 @@
                         <form action="/user/payments/{{ $payment_type->id }}" method="POST" class="d-inline">
                             @method('delete')
                             @csrf
+                            <input type="text" name="payment_type_id" hidden value={{ $payment_type->id }}>
 
                             <button class="badge bg-danger border-0" onclick="return confirm('Are you sure you want to delete this data?')"><span data-feather="x-circle"></span></button>
                         </form>

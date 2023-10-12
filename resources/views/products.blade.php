@@ -29,7 +29,7 @@
   </div>
 </div>
 @else
-<h3 class="text-center">There are currently no products available</h3>
+  <h3 class="text-center" style="color: grey"><em>There are currently no articles available</em></h3>
 @endif
 
 @endsection
